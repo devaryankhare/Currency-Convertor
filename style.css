@@ -1,0 +1,182 @@
+/* BASE RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BODY: Dark Blue Mesh Background with Moving Particles */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #0a1f36;
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+}
+
+/* Animated mesh gradient overlay */
+body::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 25% 25%, rgba(33,147,176,0.4), transparent 50%),
+              radial-gradient(circle at 75% 35%, rgba(0,223,216,0.4), transparent 50%),
+              radial-gradient(circle at 50% 75%, rgba(2,62,138,0.4), transparent 50%);
+  background-blend-mode: screen;
+  animation: meshMove 12s infinite alternate ease-in-out;
+  z-index: 0;
+}
+
+/* Faint particle noise */
+body::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('https://cdn.jsdelivr.net/gh/silvanmelchior/noise-css/noise.png');
+  opacity: 0.05;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* KEYFRAMES FOR MESH MOTION */
+@keyframes meshMove {
+  0% {
+    background-position: 25% 25%, 75% 35%, 50% 75%;
+  }
+  100% {
+    background-position: 35% 55%, 65% 25%, 60% 85%;
+  }
+}
+
+/* CONTAINER: Backdrop blur and animated border */
+.container {
+  position: relative;
+  z-index: 2;
+  background: rgba(10,31,54,0.6);
+  backdrop-filter: blur(12px);
+  color:#a8dbff;
+  padding: 3rem;
+  border-radius: 1rem;
+  min-height: 40vh;
+  max-height: 97vh;
+  width: 60vh;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+  border: 4px solid transparent;
+  background-clip: padding-box;
+  animation: glowBorder 8s infinite alternate ease-in-out;
+  text-align: center;
+}
+
+/* GLITCH BORDER ANIMATION */
+@keyframes glowBorder {
+  0% {
+    border-image: linear-gradient(45deg, #007cf0, #00dfd8) 1;
+  }
+  50% {
+    border-image: linear-gradient(135deg, #0093e9, #80d0c7) 1;
+  }
+  100% {
+    border-image: linear-gradient(225deg, #00c6ff, #005bea) 1;
+  }
+}
+
+/* Heading */
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #e1f5fe;
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;
+}
+
+/* Input, Select, Button Styling */
+form input,
+form select,
+#lastbtn {
+  width: 100%;
+  border: 1px solid #265a88;
+  background: rgba(2,39,66,0.6);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 500;
+  height: 3rem;
+  padding: 0 0.75rem;
+  border-radius: 0.5rem;
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
+  z-index: 2;
+  position: relative;
+}
+
+form input::placeholder {
+  color: #f0f8ff;
+}
+
+form input:focus,
+form select:focus {
+  outline: none;
+  border-color: #00e5ff;
+  box-shadow: 0 0 8px rgba(0,229,255,0.4);
+}
+
+/* Submit Button */
+#lastbtn {
+  cursor: pointer;
+  background: linear-gradient(90deg, #007cf0, #00dfd8);
+  border: none;
+  font-size: 1.1rem;
+  margin-top: 1.5rem;
+  transition: filter 0.3s;
+}
+#lastbtn:hover {
+  filter: brightness(1.1);
+}
+
+/* Dropdown Container */
+.select-container {
+  display: flex;
+  align-items: center;
+  padding: 0.3rem;
+  border: 2px solid transparent;
+  border-image: linear-gradient(135deg, #00e5ff, #007cf0) 1;
+  animation: glowBorder 8s infinite alternate ease-in-out;
+  border-radius: 0.75rem;
+  background: rgba(2,39,66,0.5);
+  z-index: 2;
+  margin-top: 0.8rem;
+}
+
+.select-container i {
+  font-size: 1.3rem;
+  color: #00e5ff;
+  margin-right: 0.5rem;
+}
+
+/* Hide old image icon if any */
+.select-container img {
+  display: none;
+}
+
+/* Dropdown select */
+.select-drop {
+  background: transparent;
+  flex: 1;
+  border: none;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
+
+/* Message Text */
+.msg {
+  font-size: 1rem;
+  font-weight: 500;
+  font-style: italic;
+  color: #a8dbff;
+  margin-top: 1rem;
+  z-index: 2;
+}
