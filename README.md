@@ -27,4 +27,9 @@ A simple and responsive web-based currency converter that uses real-time data fr
 ---
 
 ## 📁 Project Structure
+├── index.html # Main HTML page
+├── style.css # Styles
+├── app.js # Main logic for currency conversion
+├── codes.js # List of country codes and currency codes
+├── favicon6.jpg # Favicon used in the tab 
 
